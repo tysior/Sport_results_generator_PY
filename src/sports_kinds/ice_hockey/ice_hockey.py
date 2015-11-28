@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from src.common.sports_generator_commons import Player, Team
+from src.common.sports_generator_commons import Player, Team, Generator
 import random
 
 
@@ -30,7 +30,7 @@ class IceTeam(Team):
     defenses = 0
 
 
-class IceGenerator:
+class IceGenerator(Generator):
     def get_team_info(self, team_name):
         team = IceTeam()
         team.name = team_name['team']['tname']
