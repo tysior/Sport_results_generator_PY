@@ -64,10 +64,9 @@ class FootballGenerator(Generator):
         pl_json = {}
         return pl_json
 
-    def run_match(self, team1, team2):
-        teams = [team1, team2]
-        i = 0
-        while i < 45:
+    def run_half_match(self, start, end, teams):
+        i = start
+        while i < end:
             attacking_team = random.randint(0, 1)
             defensive_team = 1 if attacking_team == 0 else 0
             attack = teams[attacking_team].off_potential + random.randint(0, 10)
@@ -78,9 +77,18 @@ class FootballGenerator(Generator):
                     teams[attacking_team].team_score += 1
                     player_idx = random.randint(0, 4)
                     teams[attacking_team].players[player_idx].goals_in_match += 1
-                i += 1
+                i += 1 #TODO: change it to random value?
+                # i += random.randint(0, 45)
             else:
-                i += 1
+                i += 1 #TODO: change it to random value?
+                # i += random.randint(0, 45)
+        return teams
 
-        print('team: %s strzelil %d bramek' % (teams[0].name, teams[0].team_score))
-        print('team: %s strzelil %d bramek' % (teams[1].name, teams[1].team_score))
+    def run_match(self, team1, team2):
+        teams = [team1, team2]
+        intermediate = self.run_half_match(0, 45, teams)
+        print('team: %s strzelil %d bramek' % (intermediate[0].name, intermediate[0].team_score))
+        print('team: %s strzelil %d bramek' % (intermediate[1].name, intermediate[1].team_score))
+        end_result = self.run_half_match(46, 90, intermediate)
+        print('team: %s strzelil %d bramek' % (end_result[0].name, end_result[0].team_score))
+        print('team: %s strzelil %d bramek' % (end_result[1].name, end_result[1].team_score))
