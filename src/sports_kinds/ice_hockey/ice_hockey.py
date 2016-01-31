@@ -31,7 +31,7 @@ class IceTeam(Team):
 
 
 class IceGenerator(Generator):
-    def get_team_info(self, team_name):
+    def get_team_info(self, team_name, names):
         team = IceTeam()
         team.name = team_name['team']['tname']
         for key in team_name['team']['players']:

@@ -35,7 +35,7 @@ class Team:
 
 
 class Generator:
-    def get_team_info(self, team_name):
+    def get_team_info(self, team_name, names):
         pass
 
     def get_player_info(self, player_json):
