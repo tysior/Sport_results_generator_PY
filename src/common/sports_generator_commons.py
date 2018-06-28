@@ -21,6 +21,9 @@ class Player:
     # Player nationality
     nationality = ""
 
+    def update_player_info(self, player):
+        pass
+
 
 class Team:
     # Team name
@@ -35,14 +38,5 @@ class Team:
 
 
 class Generator:
-    def get_team_info(self, team_name, names):
-        pass
-
-    def get_player_info(self, player_json):
-        pass
-
-    def update_player_info(self, player):
-        pass
-
     def run_match(self, team1, team2):
         pass

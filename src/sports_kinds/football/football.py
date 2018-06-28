@@ -25,6 +25,10 @@ class FootballPlayer(Player):
     goals = 0
     goals_in_match = 0
 
+    def update_player_info(self, player):
+        pl_json = {}
+        return pl_json
+
 
 class FootballTeam(Team):
     off_potential = 0.0
@@ -69,10 +73,6 @@ class FootballGenerator(Generator):
         player.goals_in_match = 0
         player.nationality = 'Polish' #player_json['nationality']
         return player
-
-    def update_player_info(self, player):
-        pl_json = {}
-        return pl_json
 
     def run_half_match(self, start, end, teams):
         i = start

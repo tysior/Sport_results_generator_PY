@@ -23,6 +23,10 @@ class IcePlayer(Player):
     goals = 0
     goals_in_match = 0
 
+    def update_player_info(self, player):
+        pl_json = {}
+        return pl_json
+
 
 class IceTeam(Team):
     off_potential = 0.0
@@ -52,10 +56,6 @@ class IceGenerator(Generator):
         player.goals_in_match = 0
         player.nationality = 'Polish'
         return player
-
-    def update_player_info(self, player):
-        pl_json = {}
-        return pl_json
 
     def run_match(self, team1, team2):
         teams = [team1, team2]

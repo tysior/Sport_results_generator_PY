@@ -48,24 +48,6 @@ class VolleyballPlayer(Player):
     form = 0
     injury = False
 
-
-class VolleyballTeam(Team):
-    name = ""
-    sets = 0
-    score = 0
-    scores = []
-    defence = 0
-    players = []
-    players_in_match = []
-
-
-class VolleyballGenerator(Generator):
-    def get_team_info(self, team_name, names):
-        pass
-
-    def get_player_info(self, player_json):
-        pass
-
     def update_player_info(self, player):
         player.matches += 1
         player.points += player.points_in_match
@@ -80,6 +62,19 @@ class VolleyballGenerator(Generator):
         player.succ_att_in_match = 0
         player.serves_in_match = 0
         player.aces_in_match = 0
+
+
+class VolleyballTeam(Team):
+    name = ""
+    sets = 0
+    score = 0
+    scores = []
+    defence = 0
+    players = []
+    players_in_match = []
+
+
+class VolleyballGenerator(Generator):
 
     def get_block(self, team):
         a = random.randint(0, 5)
