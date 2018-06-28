@@ -76,26 +76,6 @@ class VolleyballTeam(Team):
 
 class VolleyballGenerator(Generator):
 
-    def get_block(self, team):
-        a = random.randint(0, 5)
-        b = random.randint(0, 5)
-        c = random.randint(0, 5)
-        if a != b and b != c and a != c:
-            block = team.players[a].block + team.players[b].block + team.players[c].block
-        elif a != b and b != c and a == c:
-            block = team.players[a].block + team.players[b].block
-        elif a == b and b != c and a != c:
-            block = team.players[a].block + team.players[c].block
-        elif a == b and b != c and a != c:
-            block = team.players[b].block + team.players[c].block
-        else:
-            block = team.players[a].block
-        block_json = {"player_a": a,
-                      "player_b": b,
-                      "player_c": c,
-                      "block": block}
-        return block_json
-
     def run_match(self, team1, team2):
         team1.players_in_match = random.sample(team1.players, 6)
         team2.players_in_match = random.sample(team2.players, 6)
@@ -190,6 +170,26 @@ class VolleyballGenerator(Generator):
         self.print_post_match_info(teams[0])
         self.print_post_match_info(teams[1])
 
+    def get_block(self, team):
+        a = random.randint(0, 5)
+        b = random.randint(0, 5)
+        c = random.randint(0, 5)
+        if a != b and b != c and a != c:
+            block = team.players[a].block + team.players[b].block + team.players[c].block
+        elif a != b and b != c and a == c:
+            block = team.players[a].block + team.players[b].block
+        elif a == b and b != c and a != c:
+            block = team.players[a].block + team.players[c].block
+        elif a == b and b != c and a != c:
+            block = team.players[b].block + team.players[c].block
+        else:
+            block = team.players[a].block
+        block_json = {"player_a": a,
+                      "player_b": b,
+                      "player_c": c,
+                      "block": block}
+        return block_json
+
     def change_team(self, team_serve, team_interception):
         if team_serve == 0:
             team_serve = 1
@@ -245,20 +245,20 @@ class VolleyballGenerator(Generator):
             for player in team1.players_in_match:
                 self.set_progress(player, team1.defence, True)
                 self.update_attributes(player, True)
-                self.update_player_info(player)
+                player.update_player_info(player)
             for player in team2.players_in_match:
                 self.set_progress(player, team1.defence, False)
                 self.update_attributes(player, False)
-                self.update_player_info(player)
+                player.update_player_info(player)
         else:
             for player in team2.players_in_match:
                 self.set_progress(player, team1.defence, True)
                 self.update_attributes(player, True)
-                self.update_player_info(player)
+                player.update_player_info(player)
             for player in team1.players_in_match:
                 self.set_progress(player, team1.defence, False)
                 self.update_attributes(player, False)
-                self.update_player_info(player)
+                player.update_player_info(player)
 
     def print_post_match_info(self, team):
         print(team.name)
