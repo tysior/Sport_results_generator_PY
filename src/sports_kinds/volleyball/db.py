@@ -87,3 +87,4 @@ def populate_db(dbname):
             conn.execute('INSERT INTO `{}`(Name, DoB, Nationality, Height, Weight, Serve, Attack, Block, Defence, Clubs)\
              VALUES (?,?,?,?,?,?,?,?,?,?)'.format(c["team"]["tname"]), player)
             conn.commit()
+        conn.close()
